@@ -1,0 +1,14 @@
+
+primary-toolbar button:first-child... etc. borders; :active already correct
+
+Tabs, especially left and right ones
+
+Background images of progressbar-throughs dont render correctly
+
+vertical and horizontal separators look ugly
+
+big active buttons get a lighter square in the middle
+
+own menu-item check & radio assets
+
+own mixed check & radio assets
