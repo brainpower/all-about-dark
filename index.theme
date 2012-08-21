@@ -1,8 +1,8 @@
 [X-GNOME-Metatheme]
-Name=Adwaita-dark
+Name=All-About-Dark
 Encoding=UTF-8
-GtkTheme=Adwaita-dark
-MetacityTheme=Adwaita-dark
+GtkTheme=All-About-Dark
+MetacityTheme=All-About-Dark
 IconTheme=LaGaDesk-BlueNight
 CursorTheme=bluecurve
 CursorSize=24
