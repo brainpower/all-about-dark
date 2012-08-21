@@ -1861,8 +1861,9 @@ GtkTreeMenu .menuitem * {
 	-GtkMenuItem-horizontal-padding: 0;
 }
 
-/* TODO: those should be the same as normal check- & radioboxes */
-/*
+/* TODO: those should be the same as normal check- & radioboxes;
+ * not sure if I want that, though */
+
 .menuitem.check,
 .menuitem.radio,
 .menuitem.check:hover,
@@ -1924,7 +1925,7 @@ GtkTreeMenu .menuitem * {
 
 .menuitem.radio:active:insensitive {
 	background-image: url("assets/menuitem-radio-checked-insensitive.png");
-}*/
+}
 
 
 /***************
