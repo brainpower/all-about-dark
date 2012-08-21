@@ -14,4 +14,9 @@ Installation
 ------------
 Put the "all-about-dark" folder into your ~/.themes or /usr/share/themes directory.
 
+Updating
+--------
+$ git pull
+in your local git repo and put the updated folder to where you installed this theme.
+
 [this]: http://fav.me/d34psjb
