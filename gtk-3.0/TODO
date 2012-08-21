@@ -9,6 +9,8 @@ vertical and horizontal separators look ugly
 
 big active buttons get a lighter square in the middle
 
-own menu-item check & radio assets
+menu-item checks & radios should be the same as normal ones
 
 own mixed check & radio assets
+
+clean up gtk.css
