@@ -91,9 +91,9 @@ GtkSwitch.slider {
 
     -adwaita-switch-grip-color: shade (@switch_slider_color, 0.9);
     border-color: mix (@borders, black, 0.4);
-    box-shadow: 0 -1 inset alpha(white, 0.04),
-                0 1 inset shade(@theme_bg_color, 1.1),
-                0 2 inset alpha(@borders, 0.2);
+    box-shadow: 0 -1px inset alpha(white, 0.04),
+                0 1px inset shade(@theme_bg_color, 1.1),
+                0 2px inset alpha(@borders, 0.2);
 }
 
 .scrollbar.trough.vertical {
@@ -173,7 +173,7 @@ GtkColorSwatch:selected:hover,
 GtkColorEditor GtkColorSwatch.color-dark:hover,
 GtkColorEditor GtkColorSwatch.color-light:hover {
     border-color: @borders;
-    box-shadow: 0 2 inset alpha(black, 0.15), 1 1 inset alpha(black, 0.15);
+    box-shadow: 0 2px inset alpha(black, 0.15), 1 1 inset alpha(black, 0.15);
 }
 
 GtkColorSwatch.color-dark:hover {

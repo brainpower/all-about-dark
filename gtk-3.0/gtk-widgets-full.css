@@ -139,7 +139,7 @@ GtkLabel:insensitive {
     background-color: alpha(@theme_tooltip_bg_color, 0.90);
     color: @theme_tooltip_fg_color;
 
-    text-shadow: 1 1 black;
+    text-shadow: 1px 1px black;
 }
 
 .tooltip * {
@@ -161,7 +161,7 @@ GtkLabel:insensitive {
     border-color: @borders;
 
     color: @theme_text_color;
-    text-shadow: 0 1 @button_text_shadow;
+    text-shadow: 0 1px @button_text_shadow;
 
     border-radius: 3px;
     border-width: 1px;
@@ -610,16 +610,14 @@ GtkComboBox .button:hover,
 .button:focus:active,
 .button.default:active,
 GtkComboBox .button:active {
-    /*border-image: url("assets/button/button-active-border-dark-bp.svg") 5 / 5 stretch;*/
- 		/*background-image: -gtk-gradient (linear,
-				     left top, left bottom,
-				     from (@button_hover_gradient_color_a),
-				     to (@button_hover_gradient_color_b));*//**/
 
-		/* TODO: find a better solution for background problem here */
- 		border-image: url("assets/button/button-active-border-bp.svg") 19 / 19;
- 		border-image-repeat: stretch;
- 		background-color: #0F0F0F;
+ 		border-image: url("assets/button/button-active-border-dark-bp.svg") 5 / 5 stretch;
+    /*background-image: -gtk-gradient (linear,
+    				     left top, left bottom,
+                from (@button_active_gradient_color_a),
+                color-stop (0.5, shade (@button_active_gradient_color_b, 0.90)),
+				     to (@button_active_gradient_color_a));*/
+		box-shadow: inset 0 0 8px 8px #121212;
 
  		/*background-repeat: no-repeat;*/
 }
@@ -640,6 +638,7 @@ GtkComboBox .button:active {
 				     left top, left bottom,
 				     from (@button_insensitive_gradient_color_a),
 				     to (@button_insensitive_gradient_color_b));
+  box-shadow: none;
 }
 /* Pushed + Insensitive button background */
 
@@ -1551,7 +1550,7 @@ GtkScrolledWindow.frame {
     border-width: 1px;
     padding: 0;
 
-    icon-shadow: 0 1 alpha(white, 0.5); /* FIXME*/
+    icon-shadow: 0 1px alpha(white, 0.5); /* FIXME*/
 }
 
 .notebook tab .button GtkImage:hover {
@@ -1562,9 +1561,9 @@ GtkScrolledWindow.frame {
 .notebook tab .button GtkImage:active,
 .notebook tab .button GtkImage:active:hover {
     background-color: alpha(black, 0.08); /* FIXME*/
-    box-shadow: 0 1 inset alpha(black, 0.05); /* FIXME*/
+    box-shadow: 0 1px inset alpha(black, 0.05); /* FIXME*/
     color:  @theme_base_color; /* FIXME*/
-    icon-shadow: 0 1 alpha(black, 0.25); /* FIXME*/
+    icon-shadow: 0 1px alpha(black, 0.25); /* FIXME*/
     border-color: alpha(black, 0.27)
                   alpha(black, 0.13)
                   alpha(black, 0.13)
@@ -2283,7 +2282,7 @@ GtkSwitch.slider {
     border-color: mix (@borders, @theme_text_color, 0.4);
 
     /*box-shadow: 0 -1 inset alpha(@theme_base_color, 0.50);*/
-    box-shadow: 0 -1 inset alpha(white, 0.9), 0 1 inset @theme_base_color, 0 2 inset alpha(@borders, 0.15);
+    box-shadow: 0 -1px inset alpha(white, 0.9), 0 1px inset @theme_base_color, 0 2px inset alpha(@borders, 0.15);
 
     padding: 2px 2px 3px 2px;
 
@@ -2423,7 +2422,7 @@ column-header .button:active:focus {
                                     left top, left bottom,
                                     from(shade(@entry_background_a, 0.9)),
                                     to(@entry_background_b));
-    box-shadow: 0 1 inset @entry_inset, 0 2 inset alpha(@entry_inset, 0.4);
+    box-shadow: 0 1px inset @entry_inset, 0 2 inset alpha(@entry_inset, 0.4);
 }
 
 column-header.button:insensitive,
@@ -2482,7 +2481,7 @@ row:selected {
                from(#003954),
                color-stop(0.005, #003A55),
                color-stop(0.995, #001B28),
-               to(#003954));/* url("assets/listheaders/tree.png");  move to assets & later replace with gradient */
+               to(#003954));
     border-image: url("assets/listheaders/tree-border.png") 2 / 2 stretch;
     background-repeat: no-repeat;
     border-width: 2px 0;
