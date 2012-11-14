@@ -37,9 +37,12 @@
 
     -GtkWidget-focus-padding: 2;
     -GtkWidget-focus-line-width: 1;
-    -adwaita-focus-border-color: alpha(@theme_text_color, 0.3);
+    /*-adwaita-focus-border-color: alpha(@theme_text_color, 0.3);
     -adwaita-focus-border-radius: 3;
-    -adwaita-focus-border-dashes: 1;
+    -adwaita-focus-border-dashes: 1;*/
+    outline-color: alpha(@theme_text_color, 0.3);
+    outline-style: dashed;
+    outline-offset: 3px;
     /* bp: dont show resize grip */
     -GtkWindow-resize-grip-width: 0;
     -GtkWindow-resize-grip-height: 0;
@@ -136,7 +139,7 @@ GtkLabel:insensitive {
     border-style: solid;
     border-color: #000000;
     border-width: 1px;
-    background-color: alpha(@theme_tooltip_bg_color, 0.90);
+    background-color: alpha(@theme_tooltip_bg_color, 0.85);
     color: @theme_tooltip_fg_color;
 
     text-shadow: 1px 1px black;
@@ -236,6 +239,12 @@ GtkTreeView.separator,
     color: darker (@theme_bg_color);
 }
 
+/* TODO
+.toolbar .separator {
+    color: @toolbar_separator;
+}
+*/
+
 .pane-separator { /* TODO */
     color: shade (@inactive_frame_color, 0.80);
 }
@@ -248,6 +257,12 @@ GtkTreeView.separator,
 .pane-separator,
 .pane-separator:hover {
     background-color: @theme_bg_color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("assets/handles/handle-v.png"); /* TODO weird */
+}
+.pane-separator.vertical {
+    background-image: url("assets/handles/handle-h.png");
 }
 
 .notebook .pane-separator,
@@ -275,6 +290,7 @@ GtkComboBox.combobox-entry .entry,
 	padding: 3px;
 	color: @theme_text_color;
 	background-color: @theme_base_color;
+ /* transition: all 200ms ease-out;*/
 }
 
 .entry:focus,
@@ -284,9 +300,7 @@ GtkComboBox.combobox-entry .entry,
 GtkComboBox.combobox-entry .entry:focus {
 	border-image: url("assets/entry/entry-inactive-bp.png") 2 / 2 stretch;
 	border-color: transparent;
-	/*box-shadow: 1 2 inset alpha(@theme_selected_bg_color, 0.1),
-                1 1 inset alpha(@theme_selected_bg_color, 0.1),
-                -1 -1 inset alpha(@theme_selected_bg_color, 0.2);*/
+ /* transition: all 200ms ease-in; */
 }
 
 .entry:active,
@@ -321,7 +335,7 @@ GtkComboBox .entry:insensitive {
 
 
 /****************
- * Progress bar *
+ * Progress bar * TODO, see adwaita widgets-backgrounds.css
  ****************/
 
 .progressbar,
@@ -361,7 +375,18 @@ GtkComboBox .entry:insensitive {
                                                  to (alpha (@progressbar_pattern, 0.10)));
     /* border-color: @progressbar_border; */
 }
-
+/* TODO
+ * .entry.progressbar.pulse,
+.entry.progressbar.pulse:focus {
+    background-image: linear-gradient(to top,
+                                      transparent 2px,
+                                      white 2px,
+                                      white 3px,
+                                      @borders 3px,
+                                      @borders 5px,
+                                      transparent 5px);
+}
+*/
 .progressbar.vertical {
 	background-image: -gtk-gradient(linear,
 	                          left top, right top,
@@ -559,7 +584,11 @@ GtkComboBox.combobox-entry .button,
 .button:insensitive,
 .toolbar .button:hover,
 .primary-toolbar .toolbar .button:hover,
-.primary-toolbar.toolbar .button:hover {
+.primary-toolbar.toolbar .button:hover,
+.toolbar .button.raised,
+.toolbar .raised .button,
+.toolbar .button.raised:focus,
+.toolbar .raised .button:focus {
     border-image: url("assets/button/button-border-dark-bp.svg") 5 / 5 stretch;
 }
 
@@ -688,10 +717,14 @@ GtkComboBox .button:active {
 .linked .button:focus,
 .linked .button:hover,
 .linked .button:insensitive {
+/*
     border-right-width: 1px;
     border-left-width: 0;
+*/
+
     border-image: url("assets/button/button-border-dark-bp.svg") 5 / 5 stretch;
-    border-image-width: 5 0 5 0;
+
+    border-image-width: 5px 0 5px 0;
     border-radius: 0;
 }
 
@@ -701,9 +734,10 @@ GtkComboBox .button:active {
 .linked .button:active:hover,
 .linked .entry:focus:active,
 .linked .button:focus:active{
-    border-image: url("assets/button/button-active-border-bp.svg") 19 / 19 stretch;
-    border-image-width: 19 0 19 0;
+    border-image: url("assets/button/button-active-border-dark-bp.svg") 5 / 5 stretch;
 
+    border-image-width: 5px 0 5px 0;
+    box-shadow: inset 0 0 8px 8px #121212;
 }
 
 /* Leftmost button */
@@ -713,8 +747,8 @@ GtkComboBox .button:active {
 .linked .button:first-child,
 .linked .button:focus:first-child,
 .linked .button:insensitive:first-child {
-    border-right-width: 1px;
-    border-image-width: 5 0 5 5;
+    border-right-width: 0;
+    border-image-width: 5px 0 5px 5px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
 }
@@ -725,14 +759,18 @@ GtkComboBox .button:active {
     border-color: #ff0000;
     border-style: solid;
     border-width: 1px;
+/*
     border-image: none;
+*/
 }
 
 .linked .button:active:first-child,
 .linked .button:active:hover:first-child,
 .linked .button:focus:active:first-child{
-  border-image: url("assets/button/button-active-border-bp.svg") 19 / 19 stretch;
-  border-image-width: 19 0 19 19;
+  border-image: url("assets/button/button-active-border-dark-bp.svg") 5 / 5 stretch;
+
+  border-image-width: 5px 0 5px 5px;
+  box-shadow: inset 0 0 8px 8px #121212;
 }
 
 /* Rightmost button */
@@ -741,7 +779,7 @@ GtkComboBox .button:active {
 .linked .button:focus:last-child,
 .linked .button:insensitive:last-child {
     border-left-width: 0;
-    border-image-width: 5 5 5 0;
+    border-image-width: 5px 5px 5px 0;
 
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -751,7 +789,7 @@ GtkComboBox .button:active {
 .linked .button:active:hover:last-child,
 .linked .button:focus:active:last-child{
 
-	border-image-width: 19 19 19 0;
+	border-image-width: 5px 5px 5px 0;
 }
 
 /* Linked single button */
@@ -795,7 +833,7 @@ GtkComboBox .button:active {
     border-right-width: 1px;
     border-left-width: 0;
 
-    border-image-width: 5 0 5 0;
+    border-image-width: 5px 0 5px 0;
 
     border-radius: 0;
 }
@@ -807,7 +845,7 @@ GtkComboBox .button:active {
 .inline-toolbar.toolbar .button:focus:active,
 .inline-toolbar.toolbar GtkToolButton .button:active,
 .inline-toolbar.toolbar GtkToolButton .button:focus:active{
-	border-image-width: 19 0 19 0;
+	border-image-width: 5px 0 5px 0;
 }
 
 /* Leftmost button */
@@ -832,7 +870,7 @@ GtkComboBox .button:active {
     border-left-width: 1px;
     border-right-width: 1px;
 
-    border-image-width: 5 0 5 5;
+    border-image-width: 5px 0 5px 5px;
 
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
@@ -845,7 +883,7 @@ GtkComboBox .button:active {
 .inline-toolbar.toolbar .button:focus:active:first-child,
 .inline-toolbar.toolbar GtkToolButton:first-child .button:active,
 .inline-toolbar.toolbar GtkToolButton:first-child .button:focus:active{
-	border-image-width: 19 0 19 19;
+	border-image-width: 5px 0 5px 5px;
 }
 
 /* Rightmost button */
@@ -870,7 +908,7 @@ GtkComboBox .button:active {
     border-left-width: 0;
     border-right-width: 1px;
 
-    border-image-width: 5 5 5 0;
+    border-image-width: 5px 5px 5px 0;
 
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -883,7 +921,7 @@ GtkComboBox .button:active {
 .inline-toolbar.toolbar .button:focus:active:last-child,
 .inline-toolbar.toolbar GtkToolButton:last-child .button:active,
 .inline-toolbar.toolbar GtkToolButton:last-child .button:focus:active{
-	border-image-width: 19 19 19 0;
+	border-image-width: 5px 5px 5px 0;
 }
 
 /* Single button */
@@ -1013,10 +1051,12 @@ GtkLinkButton.button *:active {
 .primary-toolbar.toolbar .button:active:insensitive {
    /* border-color: @insensitive_border_color; */
 
-    border-image: url("assets/button/button-active-border-bp.svg") 19 / 19 stretch;
+    border-image: url("assets/button/button-active-border-dark-bp.svg") 5 / 5 stretch;
     border-style: solid;
 
     background-image: none;
+    box-shadow: inset 0 0 8px 8px #121212;
+
 }
 
 .primary-toolbar .toolbar GtkSeparatorToolItem,
@@ -1202,7 +1242,18 @@ GtkComboBox.combobox-entry .button:insensitive {
     color: @internal_element_prelight;
 }
 
-.image:selected {
+.image:selected,
+.image:selected:hover {
+    color: @theme_selected_fg_color;
+}
+
+.view.image,
+.view.image:hover {
+    /* TODO color: @view_symbolic_color;*/
+}
+
+.view.image:selected,
+.view.image:selected:hover {
     color: @theme_selected_fg_color;
 }
 
@@ -2405,7 +2456,7 @@ column-header .button:focus:hover {
     text-shadow: none;
     icon-shadow: none;
     border-image: url("assets/listheaders/tree-border.png") 2 / 2 stretch;
-    border-image-width: 2 0 0 0;
+    border-image-width: 2px 0 0 0;
 }
 
 
@@ -2806,21 +2857,18 @@ GSLockPlug .frame {
     border-style: solid;
     border-radius: 0;
 }
+/*
 
 GtkPathBar .button {
     border-image: url("assets/button/button-border-dark-bp.svg") 5 / 5 stretch;
     border-style: solid;
     border-width: 2px 0;
     border-radius: 0;
-    /* border-color: @button_border;
-    box-shadow: 1 0 inset shade(@button_border, 1.40), -1 0 inset @button_border;
-*/
 }
 
 GtkPathBar .button:active,
 GtkPathBar .button:active:hover {
-    border-image: url("assets/button/button-active-border-bp.svg") 19 / 19 stretch;
-    /* box-shadow: -1 0 inset @button_border;*/
+    border-image: url("assets/button/button-active-border-dark-bp.svg") 5 / 5 stretch;
 }
 
 GtkPathBar .button:first-child,
@@ -2828,20 +2876,17 @@ GtkPathBar .button:active:first-child,
 GtkPathBar .button:active:hover:first-child {
     border-radius: 3px 0 0 3px;
     border-left-width: 1px;
-/*
-    box-shadow: -1 0 inset @button_border;
-*/
 }
 
 GtkPathBar .button:last-child {
-/*
-    box-shadow: 1 0 inset shade(@button_border, 1.40);
-*/
     border-radius: 0 3px 3px 0;
     border-right-width: 1px;
 }
+*/
 
+/*
 GtkPathBar .button:active:last-child,
 GtkPathBar .button:active:hover:last-child {
     box-shadow: none;
 }
+*/
