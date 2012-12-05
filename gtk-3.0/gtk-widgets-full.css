@@ -453,15 +453,23 @@ GtkComboBox .entry:insensitive {
 /************
  * GtkScale *
  ************/
-GtkScale {
+.scale {
     -GtkScale-slider-length: 14;
     -GtkRange-slider-width: 14;
     -GtkRange-trough-border: 0;
 }
 
-GtkScale.slider,
-GtkScale.slider.horizontal {
+.scale.slider,
+.scale.slider.horizontal {
     background-image: url("assets/range/slider-horiz.png");
+}
+
+.scale.trough { /* make through thin */
+    margin: 5px 0;
+}
+
+.scale.trough.vertical {
+    margin: 0 5px;
 }
 
 GtkScale.slider:insensitive,
@@ -528,10 +536,10 @@ GtkScale.trough:insensitive {
     background-image: none;
 }
 
-GtkScale.mark {
+.scale.mark {
     color: @theme_fg_color;
 }
-GtkScale.mark:insensitive {
+.scale.mark:insensitive {
     color: @insensitive_fg_color;
 }
 
@@ -1612,7 +1620,7 @@ GtkScrolledWindow.frame {
 .notebook tab .button GtkImage:active,
 .notebook tab .button GtkImage:active:hover {
     background-color: alpha(black, 0.08); /* FIXME*/
-    box-shadow: 0 1px inset alpha(black, 0.05); /* FIXME*/
+   /* box-shadow: 0 1px inset alpha(black, 0.05); *//* FIXME*/
     color:  @theme_base_color; /* FIXME*/
     icon-shadow: 0 1px alpha(black, 0.25); /* FIXME*/
     border-color: alpha(black, 0.27)
@@ -2333,7 +2341,7 @@ GtkSwitch.slider {
     border-color: mix (@borders, @theme_text_color, 0.4);
 
     /*box-shadow: 0 -1 inset alpha(@theme_base_color, 0.50);*/
-    box-shadow: 0 -1px inset alpha(white, 0.9), 0 1px inset @theme_base_color, 0 2px inset alpha(@borders, 0.15);
+    /*box-shadow: 0 -1px inset alpha(white, 0.9), 0 1px inset @theme_base_color, 0 2px inset alpha(@borders, 0.15);*/
 
     padding: 2px 2px 3px 2px;
 
@@ -2473,7 +2481,7 @@ column-header .button:active:focus {
                                     left top, left bottom,
                                     from(shade(@entry_background_a, 0.9)),
                                     to(@entry_background_b));
-    box-shadow: 0 1px inset @entry_inset, 0 2 inset alpha(@entry_inset, 0.4);
+    /*box-shadow: 0 1px inset @entry_inset, 0 2 inset alpha(@entry_inset, 0.4);*/
 }
 
 column-header.button:insensitive,
