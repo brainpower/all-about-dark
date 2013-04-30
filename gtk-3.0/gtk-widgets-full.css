@@ -24,6 +24,10 @@
 
     -GtkToolItemGroup-expander-size: 8; /*TODO?*/
     -GtkExpander-expander-size: 8;
+    -GtkExpander-expander-spacing: 4;
+    -GtkTreeView-expander-size: 8;
+
+    -GtkTreeView-horizontal-separator: 4;
 
     -GtkMenu-horizontal-padding: 0;
     -GtkMenu-vertical-padding: 0;
@@ -823,21 +827,15 @@ GtkComboBox .button:active {
 .primary-toolbar .button.raised.linked,
 .primary-toolbar .button.raised.linked:focus,
 .primary-toolbar .button.raised.linked:insensitive,
-.primary-toolbar .button.raised.linked:backdrop,
 .primary-toolbar .raised.linked .button,
 .primary-toolbar .raised.linked .button:focus,
 .primary-toolbar .raised.linked .button:insensitive,
-.primary-toolbar .raised.linked .button:backdrop,
 .inline-toolbar.toolbar .button,
 .inline-toolbar.toolbar .button:focus,
 .inline-toolbar.toolbar .button:insensitive,
-.inline-toolbar.toolbar .button:backdrop,
-.inline-toolbar.toolbar .button:backdrop:insensitive,
 .inline-toolbar.toolbar GtkToolButton .button,
 .inline-toolbar.toolbar GtkToolButton .button:focus,
-.inline-toolbar.toolbar GtkToolButton .button:insensitive,
-.inline-toolbar.toolbar GtkToolButton .button:backdrop,
-.inline-toolbar.toolbar GtkToolButton .button:backdrop:insensitive {
+.inline-toolbar.toolbar GtkToolButton .button:insensitive {
     border-right-width: 1px;
     border-left-width: 0;
 
@@ -860,21 +858,15 @@ GtkComboBox .button:active {
 .primary-toolbar .button.raised.linked:first-child,
 .primary-toolbar .button.raised.linked:focus:first-child,
 .primary-toolbar .button.raised.linked:insensitive:first-child,
-.primary-toolbar .button.raised.linked:backdrop:first-child,
 .primary-toolbar .raised.linked .button:first-child,
 .primary-toolbar .raised.linked .button:focus:first-child,
 .primary-toolbar .raised.linked .button:insensitive:first-child,
-.primary-toolbar .raised.linked .button:backdrop:first-child,
 .inline-toolbar.toolbar .button:first-child,
 .inline-toolbar.toolbar .button:focus:first-child,
 .inline-toolbar.toolbar .button:insensitive:first-child,
-.inline-toolbar.toolbar .button:backdrop:first-child,
-.inline-toolbar.toolbar .button:backdrop:insensitive:first-child,
 .inline-toolbar.toolbar GtkToolButton:first-child .button,
 .inline-toolbar.toolbar GtkToolButton:first-child .button:focus,
-.inline-toolbar.toolbar GtkToolButton:first-child .button:insensitive,
-.inline-toolbar.toolbar GtkToolButton:first-child .button:backdrop,
-.inline-toolbar.toolbar GtkToolButton:first-child .button:backdrop:insensitive {
+.inline-toolbar.toolbar GtkToolButton:first-child .button:insensitive {
     border-left-width: 1px;
     border-right-width: 1px;
 
@@ -898,21 +890,15 @@ GtkComboBox .button:active {
 .primary-toolbar .button.raised.linked:last-child,
 .primary-toolbar .button.raised.linked:focus:last-child,
 .primary-toolbar .button.raised.linked:insensitive:last-child,
-.primary-toolbar .button.raised.linked:backdrop:last-child,
 .primary-toolbar .raised.linked .button:last-child,
 .primary-toolbar .raised.linked .button:focus:last-child,
 .primary-toolbar .raised.linked .button:insensitive:last-child,
-.primary-toolbar .raised.linked .button:backdrop:last-child,
 .inline-toolbar.toolbar .button:last-child,
 .inline-toolbar.toolbar .button:focus:last-child,
 .inline-toolbar.toolbar .button:insensitive:last-child,
-.inline-toolbar.toolbar .button:backdrop:last-child,
-.inline-toolbar.toolbar .button:backdrop:insensitive:last-child,
 .inline-toolbar.toolbar GtkToolButton:last-child .button,
 .inline-toolbar.toolbar GtkToolButton:last-child .button:focus,
-.inline-toolbar.toolbar GtkToolButton:last-child .button:insensitive,
-.inline-toolbar.toolbar GtkToolButton:last-child .button:backdrop,
-.inline-toolbar.toolbar GtkToolButton:last-child .button:backdrop:insensitive {
+.inline-toolbar.toolbar GtkToolButton:last-child .button:insensitive {
     border-left-width: 0;
     border-right-width: 1px;
 
@@ -938,15 +924,11 @@ GtkComboBox .button:active {
 .inline-toolbar.toolbar .button:focus:only-child,
 .inline-toolbar.toolbar .button:focus:active:only-child,
 .inline-toolbar.toolbar .button:insensitive:only-child,
-.inline-toolbar.toolbar .button:backdrop:only-child,
-.inline-toolbar.toolbar .button:backdrop:insensitive:only-child,
 .inline-toolbar.toolbar GtkToolButton:only-child .button,
 .inline-toolbar.toolbar GtkToolButton:only-child .button:active,
 .inline-toolbar.toolbar GtkToolButton:only-child .button:focus,
 .inline-toolbar.toolbar GtkToolButton:only-child .button:focus:active,
-.inline-toolbar.toolbar GtkToolButton:only-child .button:insensitive,
-.inline-toolbar.toolbar GtkToolButton:only-child .button:backdrop,
-.inline-toolbar.toolbar GtkToolButton:only-child .button:backdrop:insensitive {
+.inline-toolbar.toolbar GtkToolButton:only-child .button:insensitive {
     border-right-width: 1px;
     border-left-width: 1px;
 /*
@@ -1023,8 +1005,8 @@ GtkLinkButton.button *:active {
     background-image: none;
     background-color: alpha (@theme_base_color, 0.0);
 
-    -adwaita-focus-border-radius: 3;
-    -adwaita-focus-fill-color: alpha (@theme_base_color, 0.20);
+    outline-offset: 3px;
+    outline-color: alpha (@theme_base_color, 0.20);
     -adwaita-focus-border-gradient: -gtk-gradient (linear,
                                                    left top, left bottom,
                                                    from (alpha (shade (@toolbar_active_button_color, 1.25), 0.90)),
@@ -1506,14 +1488,8 @@ GtkScrolledWindow.frame {
                                       @notebook_tab_gradient_a 7px,
                                       @notebook_tab_gradient_b);
 
-    -adwaita-focus-border-radius: 2;
+    outline-offset: 2px;
 }
-/*
-.notebook tab:backdrop {
-    background-image: none;
-    background-color: @theme_unfocused_bg_color;
-    border-color: @unfocused_insensitive_borders;
-}*/
 
 .notebook tab:active {
     /*border-width: 1px;*/
@@ -1528,23 +1504,6 @@ GtkScrolledWindow.frame {
                                       @button_gradient_color_a 3px, /* FIXME */
                                       @theme_base_color);
 }
-/*
-.notebook tab:active:backdrop {
-    *//* FIXME I need to set a background-image here, background-color is ignored *//*
-    background-image: linear-gradient(to bottom,
-                                      @unfocused_borders,
-                                      @unfocused_borders 2px,
-                                      @theme_unfocused_base_color 3px,
-                                      @theme_unfocused_base_color);
-    background-color:  @theme_unfocused_base_color;
-    border-color: @unfocused_borders;
-    *//* FIXME - should be possible to set it to none and use border color *//*
-    -adwaita-border-gradient: -gtk-gradient (linear,
-                                             left top, left bottom,
-                                             from (@unfocused_borders),
-                                             to (@unfocused_borders));
-    -adwaita-selected-tab-color: @unfocused_borders;
-}*/
 
 .notebook tab.top {
     padding: 4px 2px 0;
@@ -1660,9 +1619,7 @@ GtkScrolledWindow.frame {
 .scrollbar.button,
 .scrollbar.button:active,
 .scrollbar.button:active:hover,
-.scrollbar.button:insensitive,
-.scrollbar.button:hover:backdrop,
-.scrollbar.button:active:hover:backdrop {
+.scrollbar.button:insensitive {
     border-style: none;
     border-image: none;
     border-radius: 0;
@@ -1710,13 +1667,11 @@ GtkScrolledWindow.frame {
 }
 
 /* FIXME: Adwaita: disable until we have have an extra px padded towards the border. It feels uncentered now.
-.scrollbar.trough.vertical,
-.scrollbar.trough.vertical:backdrop {
+.scrollbar.trough.vertical {
        box-shadow: -1 0 inset alpha(@theme_text_color, 0.05), 1 0 inset alpha(@theme_text_color, 0.1);
 }
 
-.scrollbar.trough.horizontal,
-.scrollbar.trough.horizontal:backdrop {
+.scrollbar.trough.horizontal {
    box-shadow: 0 -1 inset alpha(@theme_text_color, 0.05), 0 1 inset alpha(@theme_text_color, 0.1);
 }
 */
@@ -1865,6 +1820,7 @@ GtkTreeMenu .menuitem * {
 }
 
 .menu .menuitem{
+	background-color: transparent;
 	border-width: 1px 0;
 	border-style: solid;
 	border-color: transparent;
@@ -2369,24 +2325,6 @@ GtkSwitch.slider:insensitive {
     border-color: mix(@insensitive_bg_color, @insensitive_fg_color, 0.5);
 }
 
-/*
-GtkSwitch.slider:backdrop {
-    background-color: @theme_unfocused_base_color;
-    background-image: none;
-
-    border-color: @unfocused_borders;
-
-    box-shadow: none;
-
-    color: @theme_unfocused_base_color;
-}
-
-
-GtkSwitch.slider:insensitive:backdrop {
-    background-color: @theme_unfocused_bg_color;
-    border-color: @unfocused_insensitive_borders;
-}*/
-
 /***************
  * Views       *
  ***************/
@@ -2398,9 +2336,8 @@ GtkTreeView {
     -GtkWidget-focus-line-width: 1;
     -GtkCheckButton-indicator-size: 16;
     -GtkWidget-focus-padding: 1;
-    -adwaita-focus-border-radius: 2;
-    -adwaita-focus-border-dashes: 1;
-    -adwaita-focus-border-color: alpha(@theme_text_color, 0.6);
+
+    outline-color: alpha(@theme_text_color, 0.6);
 }
 
 GtkTreeView.dnd {
@@ -2411,7 +2348,8 @@ GtkTreeView.dnd {
 }
 
 GtkViewport,
-GtkIconView {
+GtkIconView,
+.notebook GtkIconView {
     border-radius: 3px;
     padding: 0;
     background-color: @theme_base_color;
@@ -2436,7 +2374,7 @@ GtkTreeView:insensitive {
 }
 
 GtkTreeView:selected:focus {
-    -adwaita-focus-border-color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.30);
+    outline-color: mix(@theme_selected_fg_color, @theme_selected_bg_color, 0.30);
 }
 
 column-header.button,
@@ -2560,39 +2498,32 @@ GtkIconView.view.cell:selected:focus {
     /* FIXME: this probably needs to be better;
      * see https://bugzilla.gnome.org/show_bug.cgi?id=644157
      */
-    -adwaita-focus-border-color: @treeview_focus_border;
-    -adwaita-focus-border-radius: 3;
-    -adwaita-focus-border-dashes: 0;
+    outline-color: @treeview_focus_border;
+    outline-offset: 3px;
+    outline-style: solid;
 }
 
 .expander {
     border-style: solid;
     border-width: 1px;
-    border-radius: 2px;
-    border-color: shade (@internal_element_color, 1.40);
+    border-radius: 0;
+    border-color: transparent;
 
-
-    color: @internal_element_color;
-    background-color: @theme_base_color;
+	  color: @internal_element_color;
+    background-color: transparent;
 }
 
 
 .expander:active {
-    border-style: solid;
-    border-width: 1px;
-    border-image: none;
     color: @internal_element_color;
-    border-color: shade (@internal_element_color, 1.40);
+  /*  border-color: shade (@internal_element_color, 1.40);*/
 
-    background-color: @theme_base_color;
+   /* background-color: @theme_base_color;*/
 }
 
 .expander:hover {
-    border-style: solid;
-    border-width: 1px;
-
     color: @internal_element_color;
-    border-color: shade (@internal_element_color, 1.40);
+    /*border-color: shade (@internal_element_color, 1.40);*/
 
     background-color: shade (@theme_bg_color, 1.02);
 }
@@ -2603,19 +2534,18 @@ GtkIconView.view.cell:selected:focus {
 
 .expander row:selected,
 .expander row:selected:focus {
-    border-style: solid;
-    border-width: 1px;
-
-    border-color: @expander_row_selected_color;
+    border-color: transparent;
     color: @expander_row_selected_color;
     background-color: @theme_selected_bg_color;
 }
 
 
 GtkTreeView.expander:selected{
+    border-style: solid;
+    border-width: 5px;
     border-image: none;
     color: @theme_text_color;
-    border-color: @theme_fg_color;
+    /*border-color: @theme_fg_color;*/
 }
 
 /* Calendars */
@@ -2642,9 +2572,7 @@ GtkCalendar.header {
 }
 
 GtkCalendar.button,
-GtkCalendar.button:insensitive,
-GtkCalendar.button:backdrop,
-GtkCalendar.button:insensitive:backdrop {
+GtkCalendar.button:insensitive {
     background-image: none;
     background-color: transparent;
 }
