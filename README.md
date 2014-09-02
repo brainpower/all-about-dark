@@ -8,7 +8,7 @@ Well, that's simple... it's a (not yet finished) port of [this] theme to GTK3.
 
 Get this
 --------
-$ git clone git://github.com/brainpower/all-about-dark.git
+$ git clone https://github.com/brainpower/all-about-dark.git
 
 Installation
 ------------
