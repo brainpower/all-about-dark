@@ -8,7 +8,7 @@ Well, that's simple... it's a (not yet finished) port of [this] theme to GTK3.
 
 Get this
 --------
-$ git clone https://github.com/brainpower/all-about-dark.git
+    $ git clone https://github.com/brainpower/all-about-dark.git
 
 Installation
 ------------
@@ -16,7 +16,7 @@ Put the "all-about-dark" folder into your ~/.themes or /usr/share/themes directo
 
 Updating
 --------
-$ git pull
+    $ git pull
 in your local git repo and put the updated folder to where you installed this theme.
 
 [this]: http://fav.me/d34psjb
